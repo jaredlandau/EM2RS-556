@@ -33,7 +33,7 @@ class Motor:
         current_thread.start()
 
     def step_motor(self, direction, steps, speed=60):
-        print(f"[INFO] Stepping {direction} {steps} times.\n")
+        print(f"INFO: Stepping {direction} {steps} times.\n")
 
         direction_code = DIRECTION_CODES.get(direction)
 
@@ -54,4 +54,4 @@ class Motor:
         if self.current_thread and self.current_thread.is_alive():
             self.current_thread.join()
 
-        print("[INFO] Motor quick-stop engaged.\n")
+        print("INFO: Motor quick-stop engaged.\n")
