@@ -25,7 +25,7 @@ class Console:
             user_input = str.upper(input())
 
             if user_input == "HELP":
-                display_menu()
+                self.display_menu()
 
             elif any(user_input.startswith(prefix) for prefix in ["CLOCKWISE", "CW", "COUNTERCLOCKWISE", "CCW"]):
                 try:
@@ -38,7 +38,7 @@ class Console:
 
                     self.motor.start_thread(direction, steps, speed)
                 except ValueError:
-                    print("[ERROR] Invalid argument(s).")
+                    print("ERROR: Invalid argument(s).")
 
             elif user_input == "STOP":
                 self.motor.stop()
@@ -48,4 +48,4 @@ class Console:
                 break
 
             else:
-                print("[ERROR] Invalid command. Type HELP for the list of commands.\n")
+                print("ERROR: Invalid command. Type HELP for the list of commands.\n")
