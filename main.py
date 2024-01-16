@@ -9,9 +9,7 @@ DEBUG_MODE = False
 def main():
     driver = Driver(PORT, DEBUG_MODE)
     motor = Motor(driver)
-    console = Console(motor)
-
-    console.main()
+    Console(motor)
 
 
 if __name__ == "__main__":
