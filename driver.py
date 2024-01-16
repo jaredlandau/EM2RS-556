@@ -20,15 +20,15 @@ class Driver:
         try:
             value = self.driver.read_register(reg_address, decimals)
             if self.debug_mode:
-                print(f"[DEBUG] REG: {hex(reg_address)}, VALUE: {value}\n")
+                print(f"DEBUG: REG: {hex(reg_address)}, VALUE: {value}\n")
         except IOError:
-            print("[ERROR] Failed to read data from driver.")
+            print("ERROR: Failed to read data from driver.")
 
     def write_register(self, reg_address, value, decimals):
         try:
             self.driver.write_register(reg_address, value, decimals)
             self.driver.read_register(reg_address, decimals)
             if self.debug_mode:
-                print("[DEBUG] Data written successfully.")
+                print("DEBUG: Data written successfully.")
         except IOError:
-            print("[ERROR]: Failed to write data to driver.")
+            print("ERROR: Failed to write data to driver.")
