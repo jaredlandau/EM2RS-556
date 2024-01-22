@@ -4,7 +4,7 @@ from mainwindow import Ui_MainWindow
 
 
 class UserInterface(QtWidgets.QMainWindow):
-    def __init__(self, motor):
+    def __init__(self, driver, motor):
         super(UserInterface, self).__init__()
 
         self.ui = Ui_MainWindow()
@@ -14,6 +14,7 @@ class UserInterface(QtWidgets.QMainWindow):
         self.setWindowTitle("MOT-186 Control Software")
 
         # Define motor object
+        self.driver = driver
         self.motor = motor
 
         # Values
@@ -23,6 +24,8 @@ class UserInterface(QtWidgets.QMainWindow):
         self.steps = 1
 
         # Signals
+        self.ui.actionReconnect.triggered.connect(self.reconnect_clicked)
+
         self.ui.clockwiseRadioButton.toggled.connect(self.clockwise_radio_toggled)
         self.ui.counterclockwiseRadioButton.toggled.connect(self.counterclockwise_radio_toggled)
 
@@ -32,6 +35,9 @@ class UserInterface(QtWidgets.QMainWindow):
 
         self.ui.startButton.clicked.connect(self.start_button_clicked)
         self.ui.stopButton.clicked.connect(self.stop_button_clicked)
+
+    def reconnect_clicked(self):
+        self.driver.connect()
 
     def clockwise_radio_toggled(self, checked):
         if checked:

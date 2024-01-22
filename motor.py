@@ -22,6 +22,7 @@ DIRECTION_CODES = {
 class Motor:
     def __init__(self, driver):
         self.driver = driver
+
         self.current_thread = None
 
     def start_thread(self, direction, steps, speed):

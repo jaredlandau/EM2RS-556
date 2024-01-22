@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtWidgets  # Import the QtWidgets module
+from PyQt5 import QtWidgets
 
 from driver import Driver
 from motor import Motor
@@ -14,8 +14,8 @@ def main():
     driver = Driver(PORT, DEBUG_MODE)
     motor = Motor(driver)
 
-    app = QtWidgets.QApplication([])  # Create a QtWidgets.QApplication object
-    window = UserInterface(motor)
+    app = QtWidgets.QApplication([])
+    window = UserInterface(driver, motor)
     window.show()
     sys.exit(app.exec_())
 
